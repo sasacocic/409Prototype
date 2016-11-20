@@ -1,0 +1,102 @@
+<head>
+  <title>prototype</title>
+</head>
+
+<body>
+
+  {{> patientDataInput}}
+  {{> Home}}
+</body>
+
+<template name="Home">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-4 col-md-push-4">
+        <h1>Iowa State VetMed</h1>
+      </div>
+      <div class="col-md-4 col-md-push-5">
+        {{> loginButtons}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-md-push-3">
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">
+              <span class="glyphicon glyphicon-search"></span>
+            </div>
+            <input class="form-control" placeholder="Enter MID" type="text"/>
+            <span class="input-group-btn">
+              <button class="btn btn-default" id="js-New-Button" type="button">NEW</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+</template>
+
+<template name="patientDataInput">
+
+  <div class="modal fade" id="modal-data-from">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+
+          </div>
+          <div class="modal-body">
+            <from class="js-add-data">
+              <div class="form-group">
+                <label for="MID">MID</label>
+                <input placeholder="MID" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="Name">Name</label>
+                <input placeholder="Name" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="Date">Date</label>
+                <input placeholder="Date" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="Owner">Owner</label>
+                <input placeholder="Owner" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="MID">MID</label>
+                <input placeholder="MID" type="text" class="form-control">
+              </div>
+              {{#each name}}
+              <div class="form-group">
+                <label for={{this}}>{{this}}</label>
+                <select class="form-control" id={{this}}>
+                  {{#each data}}
+                  <option>{{this}}</option>
+                  {{/each}}
+                </select>
+              </div>
+              {{/each}}
+              <div class="form-group">
+                <button class="btn btn-info form-control" type="button" name="Print Label">Print Label</button>
+              </div>
+              <div class="form-group">
+              <label for="Comments">Comments</label>
+              <textarea class="form-control" rows="5"></textarea>
+              </div>
+              <button class="btn btn-success"> save </button>
+            </from>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-warning" data-dismiss="modal">cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</template>

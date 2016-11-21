@@ -14,12 +14,15 @@ Router.route('/', function () {
   this.render('Home', { to: "main" });
   this.render('patientDataInput',{ to:"modal"});
   this.render('', {to: "display"});
+  this.render('Graphs',{to: 'graph'});
+  this.render('dataValueGraph', {to: 'modalTwo'});
 });
 
 Router.route('/Search', function(){
   this.render('Home', { to: "main" });
   this.render('patientDataInput',{ to:"modal"});
   this.render('searchDisplay', {to:'display'});
+  this.render('',{to: 'graph'});
 });
 
 function displayData(mid,date,reason){
@@ -67,6 +70,27 @@ var keyNames = [{one:"PVC", two:"Lac"},{one: "TP",two:"Ket"},{one:"Azo",two:"Pt"
 Template.patientDataInput.helpers({
   name:function(){return keyNames},
   data:function(){return dataValues}
+});
+
+
+Template.dataValueGraph.helpers({
+  names:function(){return keyNames}
+});
+
+
+Template.Graphs.events({
+
+  'click #graphButton':function(event){
+    $('#graph-data-modal').modal('show');
+  }
+});
+
+Template.dataValueGraph.events({
+
+  'submit #graph-data-modal':function(event,template){
+    console.log(event.target.graphValue.value);//just printing what the user picked
+    return false;
+  }
 });
 
 

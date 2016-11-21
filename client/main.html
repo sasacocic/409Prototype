@@ -9,7 +9,9 @@
 <template name="ApplicationLayout">
   {{> yield "main"}}
   {{> yield "modal"}}
+  {{> yield "modalTwo"}}
   {{> yield "display"}}
+  {{> yield "graph"}}
 </template>
 
 <template name="Home">
@@ -66,6 +68,11 @@
     </table>
   </div>
 
+</template>
+
+
+<template name="Graphs">
+    <button class="btn btn-info" type="button" id="graphButton">Graph</button>
 </template>
 
 <template name="patientDataInput">
@@ -151,6 +158,47 @@
                 <textarea class="form-control" name="comments" rows="5"></textarea>
               </div>
               <input class="btn btn-success" type="submit" name="sub" value="Save">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-warning" data-dismiss="modal">cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template name="dataValueGraph">
+
+  <div class="modal fade" id="graph-data-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Pick the type of graph</h2>
+          <div class="modal-title">
+
+          </div>
+          <div class="modal-body">
+            <form action="">
+                {{#each names}}
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="radio" name="graphValue" value="{{this.one}}"> {{this.one}}
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="radio" name="graphValue" value="{{this.two}}"> {{this.two}}
+                    </div>
+                  </div>
+                </div>
+                {{/each}}
+                <div class="form-group">
+                  <input class="btn btn-success" type="submit" name="sub" value="Save">
+                </div>
             </form>
           </div>
           <div class="modal-footer">

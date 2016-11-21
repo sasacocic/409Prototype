@@ -4,14 +4,19 @@
 
 <body>
 
-  {{> patientDataInput}}
-  {{> Home}}
 </body>
+
+<template name="ApplicationLayout">
+  {{> yield "main"}}
+  {{> yield "modal"}}
+  {{> yield "modalTwo"}}
+  {{> yield "display"}}
+  {{> yield "graph"}}
+</template>
 
 <template name="Home">
   <div class="container">
     <div class="row">
-
       <div class="col-md-4 col-md-push-4">
         <h1>Iowa State VetMed</h1>
       </div>
@@ -23,10 +28,10 @@
       <div class="col-md-6 col-md-push-3">
         <div class="form-group">
           <div class="input-group">
-            <div class="input-group-addon">
+            <div class="input-group-addon" id="js-search-button">
               <span class="glyphicon glyphicon-search"></span>
             </div>
-            <input class="form-control" placeholder="Enter MID" type="text"/>
+            <input class="form-control" placeholder="Enter MID" type="text" id="js-search-enter"/>
             <span class="input-group-btn">
               <button class="btn btn-default" id="js-New-Button" type="button">NEW</button>
             </span>
@@ -34,8 +39,40 @@
         </div>
       </div>
       </div>
-    </div>
+  </div>
 
+</template>
+
+
+<template name="searchDisplay">
+
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Mid</th>
+        <th>Reason</th>
+        <th>Date</th>
+      </tr>
+      </thead>
+      <tbody>
+        {{#each dat}}
+        <tr>
+          <th scope="row">{{this.Mid}}</th>
+          <td>{{this.Reason}}</td>
+          <td>{{this.Date}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+
+    </table>
+  </div>
+
+</template>
+
+
+<template name="Graphs">
+    <button class="btn btn-info" type="button" id="graphButton">Graph</button>
 </template>
 
 <template name="patientDataInput">
@@ -44,39 +81,72 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
+          <h2>Enter Patient Data</h2>
           <div class="modal-title">
 
           </div>
           <div class="modal-body">
-            <form class="js-add-data">
-              <div class="form-group">
-                <label for="MID">MID</label>
-                <input placeholder="MID" type="text" class="form-control">
+            <form id="patientDataForm" class="js-add-data">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="MID">MID</label>
+                    <input placeholder="MID" type="text" name="mid" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Name">Name</label>
+                    <input placeholder="Name" name="name" type="text" class="form-control">
+                  </div>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="Name">Name</label>
-                <input placeholder="Name" type="text" class="form-control">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Date">Date</label>
+                    <input placeholder="Date" name="date" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Owner">Owner</label>
+                    <input placeholder="Owner" name="owner" type="text" class="form-control">
+                  </div>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="Date">Date</label>
-                <input placeholder="Date" type="text" class="form-control">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="RFV">Reason For Visit</label>
+                    <input placeholder="RFV" name="RFV" type="text" class="form-control">
+                  </div>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="Owner">Owner</label>
-                <input placeholder="Owner" type="text" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="MID">MID</label>
-                <input placeholder="MID" type="text" class="form-control">
-              </div>
+
               {{#each name}}
-              <div class="form-group">
-                <label for={{this}}>{{this}}</label>
-                <select class="form-control" id={{this}}>
-                  {{#each data}}
-                  <option>{{this}}</option>
-                  {{/each}}
-                </select>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for={{this.one}}>{{this.one}}</label>
+                    <select class="form-control" name={{this.one}} id={{this.one}}>
+                      {{#each data}}
+                      <option>{{this}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for={{this.two}}>{{this.two}}</label>
+                    <select class="form-control" name={{this.two}} id={{this.two}}>
+                      {{#each data}}
+                      <option>{{this}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                </div>
               </div>
               {{/each}}
               <div class="form-group">
@@ -84,9 +154,9 @@
               </div>
               <div class="form-group">
               <label for="Comments">Comments</label>
-              <textarea class="form-control" rows="5"></textarea>
+                <textarea class="form-control" name="comments" rows="5"></textarea>
               </div>
-              <button class="btn btn-success"> save </button>
+              <input class="btn btn-success" type="submit" name="sub" value="Save">
             </form>
           </div>
           <div class="modal-footer">
@@ -96,7 +166,45 @@
       </div>
     </div>
   </div>
+</template>
 
 
+<template name="dataValueGraph">
 
+  <div class="modal fade" id="graph-data-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Pick the type of graph</h2>
+          <div class="modal-title">
+
+          </div>
+          <div class="modal-body">
+            <form action="">
+                {{#each names}}
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="radio" name="graphValue" value="{{this.one}}"> {{this.one}}
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="radio" name="graphValue" value="{{this.two}}"> {{this.two}}
+                    </div>
+                  </div>
+                </div>
+                {{/each}}
+                <div class="form-group">
+                  <input class="btn btn-success" type="submit" name="sub" value="Save">
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-warning" data-dismiss="modal">cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

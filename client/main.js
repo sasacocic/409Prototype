@@ -66,7 +66,7 @@ var dataValues = [];
 for(var qq=0; qq<101;qq++){
   dataValues.push(qq);
 }
-var keyNames = [{one:"PVC", two:"Lac"},{one: "TP",two:"Ket"},{one:"Azo",two:"Pt"},{one:"Glu",two:"Ptt"}];
+var keyNames = [{one:"PCV", two:"Lac"},{one: "TP",two:"Ket"},{one:"Azo",two:"Pt"},{one:"Glu",two:"Ptt"}];
 Template.patientDataInput.helpers({
   name:function(){return keyNames},
   data:function(){return dataValues}
@@ -101,7 +101,7 @@ Template.patientDataInput.events({
     var date = event.target.date.value+ "";
     var owner = event.target.owner.value+ "";
     var rfv = event.target.RFV.value+ "";
-    var pvc = event.target.PVC.value+ "";
+    var pcv = event.target.PCV.value+ "";
     var lac = event.target.Lac.value+ "";
     var tp = event.target.TP.value+ "";
     var ket = event.target.Ket.value+ "";
@@ -116,7 +116,7 @@ Template.patientDataInput.events({
       Owner: owner,
       Date: date,
       RFV: rfv,
-      PVC: pvc,
+      PCV: pcv,
       Lac: lac,
       TP: tp,
       Ket: ket,

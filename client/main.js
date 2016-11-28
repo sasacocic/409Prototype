@@ -66,7 +66,7 @@ var dataValues = [];
 for(var qq=0; qq<101;qq++){
   dataValues.push(qq);
 }
-var keyNames = [{one:"PCV", two:"Lac"},{one: "TP",two:"Ket"},{one:"Azo",two:"Pt"},{one:"Glu",two:"Ptt"}];
+var keyNames = [{one:"PCV", two:"Lac"},{one: "TP",two:"Ket"},{one:"Azo",two:"PT"},{one:"Glu",two:"PTT"}];
 Template.patientDataInput.helpers({
   name:function(){return keyNames},
   data:function(){return dataValues}

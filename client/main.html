@@ -12,6 +12,81 @@
   {{> yield "modalTwo"}}
   {{> yield "display"}}
   {{> yield "graph"}}
+  {{> yield 'modalPrint'}}
+</template>
+
+
+<template name="printing">
+
+  <div class="modal fade" id="printing-data-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Select a data point to graph</h2>
+          <div class="modal-title">
+
+          </div>
+          <div class="modal-body">
+            <form action="">
+                {{#each names}}
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="checkbox" name="graphValue" value="{{this.one}}"> {{this.one}}
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="checkbox" name="graphValue" value="{{this.two}}"> {{this.two}}
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="checkbox" name="graphValue" value="{{this.three}}"> {{this.three}}
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="checkbox" name="graphValue" value="{{this.four}}"> {{this.four}}
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="checkbox" name="graphValue" value="{{this.five}}"> {{this.five}}
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="checkbox" name="graphValue" value="{{this.six}}"> {{this.six}}
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="checkbox" name="graphValue" value="{{this.seven}}"> {{this.seven}}
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="checkbox" name="graphValue" value="{{this.eight}}"> {{this.eight}}
+                    </div>
+                  </div>
+
+                </div>
+                {{/each}}
+                <div class="form-group">
+                  <input class="btn btn-success" type="submit" name="sub" value="Print">
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </template>
 
 <template name="Home">
@@ -214,7 +289,7 @@
               </div>
               {{/each}}
               <div class="form-group">
-                <button class="btn btn-info form-control" type="button" name="Print Label">Print Label</button>
+                <button id="print-button" class="btn btn-info form-control" type="button" name="Print Label">Print Label</button>
               </div>
               <div class="form-group">
               <label for="Comments">Comments</label>

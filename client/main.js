@@ -16,6 +16,7 @@ Router.route('/', function () {
   this.render('', {to: "display"});
   this.render('Graphs',{to: 'graph'});
   this.render('dataValueGraph', {to: 'modalTwo'});
+  this.render('printing', {to: 'modalPrint'});
 });
 
 Router.route('/Search', function(){
@@ -24,6 +25,7 @@ Router.route('/Search', function(){
   this.render('searchDisplay', {to:'display'});
   this.render('Graphs',{to: 'graph'});
   this.render('dataValueGraph', {to: 'modalTwo'});
+  this.render('printing', {to: 'modalPrint'});
 });
 
 function displayData(mid,date,reason,id){
@@ -172,7 +174,14 @@ Template.patientDataInput.events({
   },
   'click #dismissData' : function(event,template){
     template.find('form').reset();
+  },
+  'click #print-button' :function(event,template){
+    $('#printing-data-modal').modal('show');
   }
+});
+
+Template.printing.helpers({
+  names:function(){return keyNames}
 });
 
 Template.searchDisplay.helpers({

@@ -96,6 +96,7 @@ for(var qq=10; qq < 1000; qq++){
 }
 
 var keyNames = [{one:"PCV", two:"Lac", three:"TP", four:"Ket", five:"Azo", six:"PT", seven:"Glu", eight:"PTT"}];
+
 Template.patientDataInput.helpers({
   name:function(){return keyNames},
   pcvData:function(){return PcvDataValues},

@@ -22,13 +22,15 @@ Router.route('/Search', function(){
   this.render('Home', { to: "main" });
   this.render('patientDataInput',{ to:"modal"});
   this.render('searchDisplay', {to:'display'});
-  this.render('',{to: 'graph'});
+  this.render('Graphs',{to: 'graph'});
+  this.render('dataValueGraph', {to: 'modalTwo'});
 });
 
-function displayData(mid,date,reason){
+function displayData(mid,date,reason,id){
   this.Mid = mid;
   this.Date = date;
   this.Reason = reason;
+  this.ID = id;
 }
 var displayDataArray = [];
 Session.set('disData', displayDataArray);
@@ -47,7 +49,8 @@ Template.Home.events({
 
       while(displayDataArray.length != 0){displayDataArray.pop();}
       var record = dataCollection.find({"Mid":enteredMid}).forEach(function(obj){
-        displayDataArray.push(new displayData(obj.Mid,obj.Date,obj.RFV));
+        console.log(obj._id);
+        displayDataArray.push(new displayData(obj.Mid,obj.Date,obj.RFV,obj._id));
         console.log(obj);
       });
 
@@ -129,9 +132,39 @@ Template.patientDataInput.events({
     template.find('form').reset();
     $('#modal-data-from').modal('hide');
     return false;
+  },
+  'click #dismissData' : function(event,template){
+    template.find('form').reset();
   }
 });
 
 Template.searchDisplay.helpers({
   dat : function(){return Session.get('disData')}
+});
+
+Template.searchDisplay.events({
+
+  'click #theRow': function(event,template){
+
+    var midForRow = $('#hidID').html();
+
+    var record = dataCollection.findOne(midForRow);
+
+    $('#midIn').val(record.Mid);
+    $('#name').val(record.Name);
+    $('#date').val(record.Date);
+    $('#owner').val(record.Owner);
+    $('#rfv').val(record.RFV);
+    $('#Lac').val(record.Lac);
+    $('#TP').val(record.TP);
+    $('#Ket').val(record.Ket);
+    $('#Azo').val(record.Azo);
+    $('#Pt').val(record.PT);
+    $('#Glu').val(record.Glu);
+    $('#Ptt').val(record.Ptt);
+    $('#PCV').val(record.PCV);
+    $('#Comments').val(record.Comments);
+    $('#modal-data-from').modal('show');
+  }
+
 });

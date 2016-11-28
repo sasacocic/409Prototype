@@ -53,6 +53,7 @@
         <th>Mid</th>
         <th>Reason</th>
         <th>Date</th>
+        <th>View</th>
       </tr>
       </thead>
       <tbody>
@@ -61,7 +62,7 @@
           <th scope="row" id="tableRowMid">{{this.Mid}}</th>
           <td>{{this.Reason}}</td>
           <td id="tableRowDate">{{this.Date}}</td>
-          <td style="display:none;" id="hidID">{{this.ID}}</td>
+          <td> <button class="btn btn-info js-view" type="button" id="{{this.ID}}"> View </button> </td>
         </tr>
         {{/each}}
       </tbody>

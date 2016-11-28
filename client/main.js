@@ -181,11 +181,11 @@ Template.searchDisplay.helpers({
 
 Template.searchDisplay.events({
 
-  'click #theRow': function(event,template){
+  'click .js-view': function(event,template){
 
-    var midForRow = $('#hidID').html();
+    var tt = event.target;
 
-    var record = dataCollection.findOne(midForRow);
+    var record = dataCollection.findOne(tt.id);
 
     $('#midIn').val(record.Mid);
     $('#name').val(record.Name);

@@ -5,9 +5,14 @@ This project serves as a base prototype for an electronic medical records system
 
 ## Installation Instructions
 
+0. If you do not have MeteorJS installed, install it [here](https://www.meteor.com/install).
 1. Open up a bash terminal/console and type:
 ```bash
 git clone https://github.com/sasacocic/409Prototype.git
+```
+2. Install additional packages by running the following command: 
+```bash 
+meteor npm install --save babel-runtime
 ```
 
 Team members are Sasa Cocic, Raj Krishnan, Derek Yu, and Miguel Peralta.

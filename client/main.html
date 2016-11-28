@@ -1,5 +1,5 @@
 <head>
-  <title>prototype</title>
+  <title>Lloyd Veterinary</title>
 </head>
 
 <body>
@@ -128,11 +128,12 @@
 
               {{#each name}}
               <div class="row">
+
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for={{this.one}}>{{this.one}}</label>
                     <select class="form-control" name={{this.one}} id={{this.one}}>
-                      {{#each data}}
+                      {{#each pcvData}}
                       <option>{{this}}</option>
                       {{/each}}
                     </select>
@@ -142,12 +143,73 @@
                   <div class="form-group">
                     <label for={{this.two}}>{{this.two}}</label>
                     <select class="form-control" name={{this.two}} id={{this.two}}>
-                      {{#each data}}
+                      {{#each lacData}}
                       <option>{{this}}</option>
                       {{/each}}
                     </select>
                   </div>
                 </div>
+                 <div class="col-md-6">
+                  <div class="form-group">
+                    <label for={{this.three}}>{{this.three}}</label>
+                    <select class="form-control" name={{this.three}} id={{this.three}}>
+                      {{#each tpData}}
+                      <option>{{this}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                </div>
+                  <div class="col-md-6">
+                  <div class="form-group">
+                    <label for={{this.three}}>{{this.four}}</label>
+                    <select class="form-control" name={{this.four}} id={{this.four}}>
+                      {{#each ketData}}
+                      <option>{{this}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for={{this.five}}>{{this.five}}</label>
+                    <select class="form-control" name={{this.five}} id={{this.five}}>
+                      {{#each azoData}}
+                      <option>{{this}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for={{this.six}}>{{this.six}}</label>
+                    <select class="form-control" name={{this.six}} id={{this.six}}>
+                      {{#each ptData}}
+                      <option>{{this}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for={{this.seven}}>{{this.seven}}</label>
+                    <select class="form-control" name={{this.seven}} id={{this.seven}}>
+                      {{#each gluData}}
+                      <option>{{this}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for={{this.eight}}>{{this.eight}}</label>
+                    <select class="form-control" name={{this.eight}} id={{this.eight}}>
+                      {{#each gluData}}
+                      <option>{{this}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                </div>
+
               </div>
               {{/each}}
               <div class="form-group">
@@ -155,13 +217,15 @@
               </div>
               <div class="form-group">
               <label for="Comments">Comments</label>
-                <textarea class="form-control" name="comments" rows="5"></textarea>
+                <textarea id="commentsBox" class="form-control" name="comments" rows="5"></textarea>
               </div>
               <input class="btn btn-success" type="submit" name="sub" value="Save">
             </form>
           </div>
           <div class="modal-footer">
+
             <button id="dismissData" class="btn btn-warning" data-dismiss="modal">cancel</button>
+
           </div>
         </div>
       </div>
@@ -176,7 +240,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h2>Pick the type of graph</h2>
+          <h2>Select a data point to graph</h2>
           <div class="modal-title">
 
           </div>
@@ -202,7 +266,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-warning" data-dismiss="modal">cancel</button>
+            <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
           </div>
         </div>
       </div>

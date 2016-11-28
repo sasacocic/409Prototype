@@ -62,14 +62,50 @@ Template.Home.events({
   }
 });
 
-var dataValues = [];
-for(var qq=0; qq<101;qq++){
-  dataValues.push(qq);
+var PcvDataValues = [];
+for(var qq=0; qq<100;qq++){
+  PcvDataValues.push(qq);
 }
-var keyNames = [{one:"PCV", two:"Lac"},{one: "TP",two:"Ket"},{one:"Azo",two:"Pt"},{one:"Glu",two:"Ptt"}];
+var LacDataValues = [];
+for(var qq=0; qq < 41; qq++){
+  LacDataValues.push(qq);
+}
+var tpDataValues =[];
+for(var qq=0; qq < 14; qq++){
+  tpDataValues.push(qq);
+}
+var ketDataValues =[];
+for(var qq=0; qq < 9; qq++){
+  ketDataValues.push(qq);
+}
+var azoDataValues =[];
+for(var qq=40; qq < 81; qq++){
+  azoDataValues.push(qq);
+}
+var ptDataValues =[];
+for(var qq=0; qq < 1000; qq++){
+  ptDataValues.push(qq);
+}
+var gluDataValues =[];
+for(var qq=0; qq < 1000; qq++){
+  gluDataValues.push(qq);
+}
+var pttDataValues =[];
+for(var qq=10; qq < 1000; qq++){
+  pttDataValues.push(qq);
+}
+
+var keyNames = [{one:"PCV", two:"Lac", three:"TP", four:"Ket", five:"Azo", six:"PT", seven:"Glu", eight:"PTT"}];
 Template.patientDataInput.helpers({
   name:function(){return keyNames},
-  data:function(){return dataValues}
+  pcvData:function(){return PcvDataValues},
+  lacData:function(){return LacDataValues},
+  tpData:function(){return tpDataValues},
+  ketData:function(){return ketDataValues},
+  azoData:function(){return azoDataValues},
+  ptData:function(){return ptDataValues},
+  gluData:function(){return gluDataValues},
+  pttData:function(){return pttDataValues}
 });
 
 

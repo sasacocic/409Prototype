@@ -14,5 +14,6 @@ git clone https://github.com/sasacocic/409Prototype.git
 ```bash 
 meteor npm install --save babel-runtime
 ```
+* If you're using a Windows machine, type ```Meteor.bat``` to run the software. If you're on a Mac, type ```Meteor``` to run it.
 
 Team members: Sasa Cocic, Raj Krishnan, Derek Yu, and Miguel Peralta.
